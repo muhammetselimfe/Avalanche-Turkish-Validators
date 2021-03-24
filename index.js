@@ -1,25 +1,33 @@
 var payButton = document.getElementById('donation-button')
 
-window.addEventListener('load', async () => {
-    if (window.ethereum) {
-      window.web3 = new Web3(ethereum);
-      try {
-        await ethereum.enable();
-        initPayButton()
-      } catch (err) {
-        console.log('User denied account access')
-        alert('User denied account access')
-      }
-    } else if (window.web3) {
-      window.web3 = new Web3(web3.currentProvider)
-      initPayButton()
-    } else {
-      console.log('No Metamask (or other Web3 Provider) installed')
-      alert('No Metamask (or other Web3 Provider) installed')
-    }
-  })
+
 
   const initPayButton = () => {
+
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          initPayButton()
+        } catch (err) {
+          console.log('User denied account access')
+          alert('User denied account access')
+        }
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        initPayButton()
+      } else {
+        console.log('No Metamask (or other Web3 Provider) installed')
+        alert('No Metamask (or other Web3 Provider) installed')
+      }
+    })
+
+
+
+
+
+
     payButton.onclick = () =>{
       // paymentAddress is where funds will be send to
       const paymentAddress = '0x916fd3fbb0C0F5495D1a03a100bC3731115c8C16'
