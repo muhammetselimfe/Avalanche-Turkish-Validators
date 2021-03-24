@@ -28,7 +28,7 @@ window.addEventListener('load', async () => {
       web3.eth.sendTransaction({
         from: web3.givenProvider.selectedAddress,
         to: paymentAddress,
-        value: web3.utils.toWei('1', 'ether')
+        value: web3.utils.toWei('0.1', 'ether')
       }, (err, transactionId) => {
         if  (err) {
           console.log('Payment failed', err)
