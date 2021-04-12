@@ -1,87 +1,57 @@
 body{
-    background-color:#2f4f4f;
-    width: 100%;
-    margin: 0 auto;
-    width: 700px;
-    padding: 25px;   
+  background-color:#5d478b;
+  width: 100%;
+  margin: 0 auto;
+  width: 700px;
+  padding: 25px; 
+  margin-left: 25%;  
 }
-  h4{
-      color: white;
-      font-size: x-large;
-      font-family: "Lucida Console", "Courier New", monospace;
-      margin-left: 18%;
-  }  
-  a{
-      color: black;
-      margin-left: 3%;
-  }
-  table {
-    width:100%;
+table {
+  width:100%;
+  margin-left: 1%;
 
-  }
-  table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  th, td {
-    padding: 15px;
-    text-align: left;
-  }
-  #t01 tr:nth-child(even) {
-    background-color: #eee;
-  }
-  #t01 tr:nth-child(odd) {
-   background-color: #fff;
-  }
-  #t01 th {
-    background-color: black;
-    color: white;
-  }
+}
+table, th, td {
+  border: 1px solid wheat;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+  background-color: #fff;
+ }
+ #t01 th {
+  background-color: goldenrod;
+  /* color: white; */
+}
+#footer{
+  color: white;
+  margin-left: 53%;
+  padding-bottom: 3%;
+  padding-top: 3%;    
+}
 
-  .footer{
-      color: white;
-      margin-left: 43%;
-      margin-top: 3%;
-      
-  }
- 
+p{
+  width:100%;
+  color: blanchedalmond;
+}
 
+tr{
+padding: 15px;
 
-  .donation-button {
-    position: relative;
-    background-color: #4CAF50;
-    border: none;
-    font-size: 18px;
-    color: #FFFFFF;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 20px;
-    margin-left: 250px;
-    border-radius: 12px
-  }
-  
-  .donation-button:after {
-    content: "";
-    background: #f1f1f1;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px !important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s
-  }
-  
-  .donation-button:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s
-  }
+}
+h4{
+color: white;
+font-size: x-large;
+font-family: "Lucida Console", "Courier New", monospace;
+margin-left: 30%;
+}  
 
+a{
+color: black;
+}
