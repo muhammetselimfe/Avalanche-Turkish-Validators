@@ -37,7 +37,7 @@ th, td {
 }
 #footer{
   color: white;
-  margin-left: 53%;
+  margin-left: 25%;
   padding-bottom: 3%;
   padding-top: 3%;    
 }
@@ -55,7 +55,8 @@ h4{
 color: white;
 font-size: x-large;
 font-family: "Lucida Console", "Courier New", monospace;
-margin-left: 30%;
+margin-left: 15%;
+margin-top: 3%;
 }  
 
 a{

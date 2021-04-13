@@ -81,7 +81,7 @@ axios.get('https://vscout.io/dev/api/validators')
 
             tablo.appendChild(tr)
 
-            div.appendChild(tablo)
+            document.body.appendChild(tablo)
 
           })
         });
