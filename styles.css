@@ -2,13 +2,18 @@ body{
   background-color:#5d478b;
   /* width: 100%; */
   /* margin: 0 auto; */
-  width: 700px;
+  width: 100%;
   padding-left: 25%; 
+  
+  
   /* margin-left: 25%;   */
 }
 table {
-  width:100%;
+  /* width:100%; */
   margin-left: 1%;
+  /* padding: 70%; */
+  padding: 30%;
+  
 
 }
 table, th, td {
@@ -54,4 +59,8 @@ margin-left: 30%;
 
 a{
 color: black;
+}
+
+div{
+  padding: 1%;
 }
