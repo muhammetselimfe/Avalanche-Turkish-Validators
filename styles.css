@@ -1,68 +1,85 @@
-body{
-  background-color:#5d478b;
-  /* width: 100%; */
-  /* margin: 0 auto; */
-  width: 100%;
-  padding-left: 25%; 
-  
-  
-  /* margin-left: 25%;   */
+/* body{
+    background-color:#5d478b;
+    width: 100%;
+    margin: 0 auto;
+    width: 700px;
+    padding: 25px; 
+    margin-left: 25%;  
 }
 table {
-  /* width:100%; */
-  margin-left: 1%;
-  padding-right: 10%;
-  /* padding: 70%; */
-  padding-bottom: 30%;
-  
+    width:100%;
+    margin-left: 1%;
 
-}
-table, th, td {
-  border: 1px solid wheat;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 15px;
-  text-align: left;
-}
-#t01 tr:nth-child(even) {
-  background-color: #eee;
-}
-#t01 tr:nth-child(odd) {
-  background-color: #fff;
- }
- #t01 th {
-  background-color: goldenrod;
-  /* color: white; */
-}
-#footer{
-  color: white;
-  margin-left: 25%;
-  padding-bottom: 3%;
-  padding-top: 3%;    
+  }
+  table, th, td {
+    border: 1px solid wheat;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  #t01 tr:nth-child(even) {
+    background-color: #eee;
+  }
+  #t01 tr:nth-child(odd) {
+    background-color: #fff;
+   }
+   #t01 th {
+    background-color: goldenrod;
+  }
+  #footer{
+    color: white;
+    margin-left: 53%;
+    padding-bottom: 3%;
+    padding-top: 3%;    
 }
 
 p{
-  width:100%;
-  color: blanchedalmond;
+    width:100%;
+    color: blanchedalmond;
 }
 
 tr{
-padding: 15px;
+  padding: 15px;
 
 }
 h4{
-color: white;
-font-size: x-large;
-font-family: "Lucida Console", "Courier New", monospace;
-margin-left: 15%;
-margin-top: 3%;
+  color: white;
+  font-size: x-large;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 30%;
 }  
 
 a{
-color: black;
+  color: black;
+} */
+table {
+  width:70%;
+  margin-left: 17%;
+
+
 }
 
-div{
-  padding: 1%;
+a{
+  color: black;
+}
+body{
+  margin: 0 auto;
+
+}
+h4{
+  color: black;
+  font-size: x-large;
+  font-family: "Lucida Console", "Courier New", monospace;
+  margin-left: 37%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}  
+
+#footer{
+  color: black;
+  margin-left: 50%;
+  padding-bottom: 3%;
+  padding-top: 3%;    
 }

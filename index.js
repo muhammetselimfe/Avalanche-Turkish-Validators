@@ -102,10 +102,10 @@ axios.get('https://vscout.io/dev/api/validators')
         })));
         // Code Source: https://stackoverflow.com/questions/14267781/sorting-html-table-with-javascript/49041392#49041392
 
-        // let footer = document.createElement("footer")
-        // footer.setAttribute("id", "footer")
-        // footer.innerHTML = "Made with ❤️"
-        // document.body.appendChild(footer)
+        let footer = document.createElement("footer")
+        footer.setAttribute("id", "footer")
+        footer.innerHTML = "Made with ❤️"
+        document.body.appendChild(footer)
       })
   })
 
