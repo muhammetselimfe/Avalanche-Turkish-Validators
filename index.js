@@ -1,5 +1,4 @@
 const search = (validatorNodeID, array) => array.filter(validator => validator.nodeID.includes(validatorNodeID)) // Searches for the given node id in the given array.
-var div = document.getElementById("main")
 function Rolling(number, digit) {
   digit = Math.pow(10, digit)
   return Math.round(number * digit) / digit
