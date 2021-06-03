@@ -1,14 +1,15 @@
-const search = (validatorNodeID, array) => array.filter(validator => validator.nodeID.includes(validatorNodeID)) // Searches for the given node id in the given array.
-function Rolling(number, digit) {
-  digit = Math.pow(10, digit)
-  return Math.round(number * digit) / digit
+const search = (validatorNodeID, array) => array.filter(validator => validator.nodeID.includes(validatorNodeID)) // verilen node id'yi verilen array'de arıyor.
+
+function yuvarla(sayi, basamak) {
+  basamak = Math.pow(10, basamak)
+  return Math.round(sayi * basamak) / basamak
 }
 
 axios.get('https://vscout.io/dev/api/validators')
   .then((response) => {
     const validators = response.data.validators
     //console.log(validators)        
-    //console.log(search("NodeID-9oP7KmQjtxi7rK5GKmRXFNuNpPmr2vzfw",validators))
+    //console.log(search("NodeID-EmPwabyobnM3jYDvQuxZdLBTut5V5pq2n", validators))
 
     axios.get('https://raw.githubusercontent.com/muhammetselimfe/validator-list/master/validators.json')
       .then((response) => {
@@ -17,61 +18,63 @@ axios.get('https://vscout.io/dev/api/validators')
 
         //console.log(validatorList[0].username)       
 
-        let tablo = document.createElement("table")
+        var tablo = document.createElement("table")
         tablo.setAttribute("id", "t01")
-        let tr = document.createElement("tr")
-        tablo.appendChild(tr)
+        var trtr = document.createElement("tr")
+        tablo.appendChild(trtr)
 
-        let username = document.createElement("th")
-        tr.appendChild(username)
+        var username = document.createElement("th")
+        trtr.appendChild(username)
         username.innerText = "Kullanıcı Adı"
 
-        let Nodeid = document.createElement("th")
-        tr.appendChild(Nodeid)
+        var Nodeid = document.createElement("th")
+        trtr.appendChild(Nodeid)
         Nodeid.innerText = "Validator Node ID"
 
         let fee = document.createElement("th")
-        tr.appendChild(fee)
+        trtr.appendChild(fee)
         fee.innerText = "Fee(%)"
 
         let capacity = document.createElement("th")
-        tr.appendChild(capacity)
+        trtr.appendChild(capacity)
         capacity.innerText = "Kapasite"
 
         let location = document.createElement("th")
-        tr.appendChild(location)
+        trtr.appendChild(location)
         location.innerText = "Lokasyon"
 
         let upTime = document.createElement("th")
-        tr.appendChild(upTime)
-        upTime.innerText="UPTIME"
+        trtr.appendChild(upTime)
+        upTime.innerText = "UPTIME"
 
         validatorList.forEach(element => {
 
           const test = search(element.nodeID, validators)
           //console.log(test)
-          test.forEach(elementSecondForEach => {
-            let fee = Rolling(elementSecondForEach.delegationFee, 2)
+          test.forEach(element2 => {
+            var fee = yuvarla(element2.delegationFee, 2)
+            var kap = element2.remainingCapacity
             //console.log(kap)
 
-            let tr = document.createElement("tr")
-            let userNameRow = document.createElement("td")
-            //userNameRow.setAttribute("id","user")
-            userNameRow.style.cssText = "height: 70px;" //** */
-            let nodeIDRow = document.createElement("td")
-            let feeRow = document.createElement("td")
-            let CapRow = document.createElement("td")
-            let LocationRow = document.createElement("td")
-            let upTimeRow = document.createElement("td")
+            var tr = document.createElement("tr")
+            var usernameRow = document.createElement("td")
+            //usernameRow.setAttribute("id","user")
+            usernameRow.style.cssText = "height: 60px;"
+            var nodeIDRow = document.createElement("td")
+            var feeRow = document.createElement("td")
+            var CapRow = document.createElement("td")
+            var LocationRow = document.createElement("td")
+            var upTimeRow = document.createElement("td")
 
-            userNameRow.innerHTML = `<a href="https://t.me/${element.username}" target="_blank">${element.username}</a>` //element.username
-            nodeIDRow.innerHTML = `<a href="https://vscout.io/validator/${elementSecondForEach.nodeID}" target="_blank">${elementSecondForEach.nodeID}</a>` //elementSecondForEach.nodeID
-            feeRow.innerHTML =  + fee
-            CapRow.innerHTML = parseInt(elementSecondForEach.remainingCapacity / 10 ** 9)
-            LocationRow.innerHTML = elementSecondForEach.country
-            upTimeRow.innerHTML = parseInt(elementSecondForEach.uptime*100)
+            //tr.innerHTML = element.username
+            usernameRow.innerHTML = `<a href="https://t.me/${element.username}" target="_blank">${element.username}</a>` //element.username
+            nodeIDRow.innerHTML = `<a href="https://vscout.io/validator/${element2.nodeID}" target="_blank">${element2.nodeID}</a>` //element2.nodeID
+            feeRow.innerHTML = + fee
+            CapRow.innerHTML = parseInt(element2.remainingCapacity / 10 ** 9)
+            LocationRow.innerHTML = element2.country
+            upTimeRow.innerHTML = parseInt(element2.uptime * 100)
 
-            tr.appendChild(userNameRow)
+            tr.appendChild(usernameRow)
             tr.appendChild(nodeIDRow)
             tr.appendChild(feeRow)
             tr.appendChild(CapRow)
@@ -101,13 +104,166 @@ axios.get('https://vscout.io/dev/api/validators')
         })));
         // Code Source: https://stackoverflow.com/questions/14267781/sorting-html-table-with-javascript/49041392#49041392
 
-        let footer = document.createElement("footer")
+        var footer = document.createElement("footer")
         footer.setAttribute("id", "footer")
         footer.innerHTML = "Made with ❤️"
         document.body.appendChild(footer)
+
       })
   })
 
+/**** */
+const price = document.getElementById('price')
+
+//Getting live price
+const COINGECKO_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd'
+
+function updatePrices() {
+  axios
+    .get(COINGECKO_URL)
+    .then((res) => {
+      console.log(res.data['avalanche-2'].usd)
+      price.innerText = res.data['avalanche-2'].usd + '$'
+
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+}
+
+updatePrices()
+
+/** */
+const donateMin = document.getElementById('donateMin')
+const donateMedium = document.getElementById('donateMedium')
+const donateMax = document.getElementById('donateMax')
+
+donateMin.addEventListener('click', async () => {
+  if (window.ethereum) {
+    window.web3 = new Web3(ethereum);
+    try {
+      await ethereum.enable();
+      initPayButtonMin()
+    } catch (err) {
+      console.log('User denied account access')
+      alert('User denied account access')
+    }
+  } else if (window.web3) {
+    window.web3 = new Web3(web3.currentProvider)
+    initPayButtonMin()
+  } else {
+    console.log('No Metamask (or other Web3 Provider) installed')
+    alert('No Metamask (or other Web3 Provider) installed')
+  }
+})
+
+const initPayButtonMin = () => {
+
+  const paymentAddress = '0xc171Ff6c23960Be438DBdC7eE536F65703c8Ad61'
+  //const amountEth = 1
+
+  web3.eth.sendTransaction({
+    from: web3.givenProvider.selectedAddress,
+    to: paymentAddress,
+    value: web3.utils.toWei('0.1')
+  }, (err, transactionId) => {
+    if (err) {
+      console.log('Payment failed', err)
+      alert('Payment failed')
+    } else {
+      console.log('Payment successful', transactionId)
+      if (window.confirm('Payment successful, check on explorer')) {
+        window.open('https://cchain.explorer.avax-test.network/tx/' + transactionId, '_blank');
+      };
+
+    }
+  })
+
+}
+
+donateMedium.addEventListener('click', async () => {
+  if (window.ethereum) {
+    window.web3 = new Web3(ethereum);
+    try {
+      await ethereum.enable();
+      initPayButtonMedium()
+    } catch (err) {
+      console.log('User denied account access')
+      alert('User denied account access')
+    }
+  } else if (window.web3) {
+    window.web3 = new Web3(web3.currentProvider)
+    initPayButtonMedium()
+  } else {
+    console.log('No Metamask (or other Web3 Provider) installed')
+    alert('No Metamask (or other Web3 Provider) installed')
+  }
+})
+
+const initPayButtonMedium = () => {
+
+  const paymentAddress = '0xc171Ff6c23960Be438DBdC7eE536F65703c8Ad61'
+
+  web3.eth.sendTransaction({
+    from: web3.givenProvider.selectedAddress,
+    to: paymentAddress,
+    value: web3.utils.toWei('0.5')
+  }, (err, transactionId) => {
+    if (err) {
+      console.log('Payment failed', err)
+      alert('Payment failed')
+    } else {
+      console.log('Payment successful', transactionId)
+      if (window.confirm('Payment successful, check on explorer')) {
+        window.open('https://cchain.explorer.avax-test.network/tx/' + transactionId, '_blank');
+      };
+
+    }
+  })
+
+}
+
+donateMax.addEventListener('click', async () => {
+  if (window.ethereum) {
+    window.web3 = new Web3(ethereum);
+    try {
+      await ethereum.enable();
+      initPayButtonMax()
+    } catch (err) {
+      console.log('User denied account access')
+      alert('User denied account access')
+    }
+  } else if (window.web3) {
+    window.web3 = new Web3(web3.currentProvider)
+    initPayButtonMax()
+  } else {
+    console.log('No Metamask (or other Web3 Provider) installed')
+    alert('No Metamask (or other Web3 Provider) installed')
+  }
+})
+
+const initPayButtonMax = () => {
+
+  const paymentAddress = '0xc171Ff6c23960Be438DBdC7eE536F65703c8Ad61'
+
+  web3.eth.sendTransaction({
+    from: web3.givenProvider.selectedAddress,
+    to: paymentAddress,
+    value: web3.utils.toWei('1')
+  }, (err, transactionId) => {
+    if (err) {
+      console.log('Payment failed', err)
+      alert('Payment failed')
+    } else {
+      console.log('Payment successful', transactionId)
+      if (window.confirm('Payment successful, check on explorer')) {
+        window.open('https://cchain.explorer.avax-test.network/tx/' + transactionId, '_blank');
+      };
+
+    }
+  })
+
+}
 
 
 
