@@ -110,7 +110,21 @@ axios.get('https://vscout.io/dev/api/validators')
         document.body.appendChild(footer)
 
       })
-  })
+  }).catch((error) => {
+    if (error.response) {
+      //The response status is an error code
+      console.log(error.response.status);
+      var h1 = document.getElementById("title")
+      h1.innerText = "Service is temporarily unavailable"
+
+    } else if (error.request) {
+      //Response not received though the request was sent
+      console.log(error.request);
+    } else {
+      //An error occurred when setting up the request
+      console.log(error.message);
+    }
+  });
 
 /**** */
 const price = document.getElementById('price')
