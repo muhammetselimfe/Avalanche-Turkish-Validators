@@ -5,7 +5,7 @@ function yuvarla(sayi, basamak) {
   return Math.round(sayi * basamak) / basamak
 }
 
-axios.post('http://95.70.184.178:9950/ext/bc/P', {
+axios.post('https://proxy-server1.herokuapp.com', {
   "jsonrpc": "2.0",
   "method": "platform.getCurrentValidators",
   "params": {},
