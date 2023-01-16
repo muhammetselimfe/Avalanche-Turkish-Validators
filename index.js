@@ -5,18 +5,25 @@ function yuvarla(sayi, basamak) {
   return Math.round(sayi * basamak) / basamak
 }
 
-axios.post('https://proxy-server1.herokuapp.com'+'/ext/bc/P', {
+axios.post('http://79.143.179.196:9950/ext/bc/P', {
   "jsonrpc": "2.0",
   "method": "platform.getCurrentValidators",
   "params": {},
   "id": 1
 }, {
   headers: {
+    // 'Access-Control-Allow-Origin': 'http://79.143.179.196:9950',
     'content-type': 'application/json'
   }
 }).then((response) => {
   const validators = response.data.result.validators
-  console.log(validators)        
+  console.log(validators)
+//   if (!validators) {
+// console.log('Eror due proxy server')
+//   }
+//   else{
+//     console.log(validators)
+//   }
   //console.log(search("NodeID-EmPwabyobnM3jYDvQuxZdLBTut5V5pq2n", validators))
 
   axios.get('https://raw.githubusercontent.com/muhammetselimfe/validator-list/master/validators.json')
