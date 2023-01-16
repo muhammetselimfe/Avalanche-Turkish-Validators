@@ -5,7 +5,7 @@ function yuvarla(sayi, basamak) {
   return Math.round(sayi * basamak) / basamak
 }
 
-axios.post('http://79.143.179.196:9950/ext/bc/P', {
+axios.post('https://shrouded-meadow-12045.herokuapp.com/http://79.143.179.196:9950/ext/bc/P', {
   "jsonrpc": "2.0",
   "method": "platform.getCurrentValidators",
   "params": {},
