@@ -1,29 +1,22 @@
 const search = (validatorNodeID, array) => array.filter(validator => validator.nodeID.includes(validatorNodeID)) // verilen node id'yi verilen array'de arıyor.
 
-function yuvarla(sayi, basamak) {
-  basamak = Math.pow(10, basamak)
-  return Math.round(sayi * basamak) / basamak
+function round(num, digit) {
+  digit = Math.pow(10, digit)
+  return Math.round(num * digit) / digit
 }
 
-axios.post('https://shrouded-meadow-12045.herokuapp.com/http://79.143.179.196:9950/ext/bc/P', {
+axios.post('https://api.avax.network/ext/bc/P', {
   "jsonrpc": "2.0",
   "method": "platform.getCurrentValidators",
   "params": {},
   "id": 1
 }, {
   headers: {
-    // 'Access-Control-Allow-Origin': 'http://79.143.179.196:9950',
     'content-type': 'application/json'
   }
 }).then((response) => {
   const validators = response.data.result.validators
-  console.log(validators)
-//   if (!validators) {
-// console.log('Eror due proxy server')
-//   }
-//   else{
-//     console.log(validators)
-//   }
+  // console.log(validators)
   //console.log(search("NodeID-EmPwabyobnM3jYDvQuxZdLBTut5V5pq2n", validators))
 
   axios.get('https://raw.githubusercontent.com/muhammetselimfe/validator-list/master/validators.json')
@@ -33,10 +26,10 @@ axios.post('https://shrouded-meadow-12045.herokuapp.com/http://79.143.179.196:99
 
       //console.log(validatorList[0].username)       
 
-      var tablo = document.createElement("table")
-      tablo.setAttribute("id", "t01")
+      var table = document.createElement("table")
+      table.setAttribute("id", "t01")
       var trtr = document.createElement("tr")
-      tablo.appendChild(trtr)
+      table.appendChild(trtr)
 
       var username = document.createElement("th")
       trtr.appendChild(username)
@@ -67,7 +60,7 @@ axios.post('https://shrouded-meadow-12045.herokuapp.com/http://79.143.179.196:99
         const test = search(element.nodeID, validators)
         //console.log(test)
         test.forEach(element2 => {
-          var fee = yuvarla(element2.delegationFee, 2)
+          var fee = round(element2.delegationFee, 2)
           var kap = element2.remainingCapacity
           //console.log(kap)
 
@@ -96,9 +89,9 @@ axios.post('https://shrouded-meadow-12045.herokuapp.com/http://79.143.179.196:99
           // tr.appendChild(LocationRow) *-*-*-*-*-*-
           tr.appendChild(upTimeRow)
 
-          tablo.appendChild(tr)
+          table.appendChild(tr)
 
-          document.body.appendChild(tablo)
+          document.body.appendChild(table)
 
         })
       });
@@ -293,15 +286,3 @@ const initPayButtonMax = () => {
   })
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
