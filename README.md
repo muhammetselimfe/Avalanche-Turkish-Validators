@@ -1,4 +1,5 @@
-# validators-vue
+# Avalanche-Turkish-Validators
+
 
 ## Project setup
 ```
