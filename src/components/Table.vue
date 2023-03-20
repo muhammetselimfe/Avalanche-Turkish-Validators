@@ -96,18 +96,22 @@ table {
   width: 100%;
   table-layout: auto;
 }
+
 body {
   padding: 100px;
+  font-family: "Roboto", sans-serif;
+  background: #6E87E3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6E87E3, #F11D1F); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6E87E3, #F11D1F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 th {
-  background-color: rgba(255, 255, 255, 0.3);
-
+  background-color: #FFFFFF;
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
   font-size: 16px;
-  color: #fff;
+  color: #6E87E3;
   text-transform: uppercase;
 }
 
@@ -117,23 +121,16 @@ td {
   vertical-align: middle;
   font-weight: 300;
   font-size: 16px;
-  color: #fff;
+  color: #FFFFFF;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-
   height: 30px;
   overflow-x: auto;
   margin-top: 0px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-body {
-  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-  background: linear-gradient(to right, #25c481, #25b7c4);
-  font-family: "Roboto", sans-serif;
-}
-
 a {
-  color: white;
+  color: #FFFFFF;
 }
 
 * {
