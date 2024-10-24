@@ -1,23 +1,12 @@
 <template>
   <div>
     <div v-if="turkishValidators.length > 0" class="card-container">
-      <div class="card" v-for="validator in turkishValidators" :key="validator.nodeID">
-        <div class="card-header">
-          <h3>{{ validator.username }}</h3>
-          <a target="_blank" :href="`https://t.me/${validator.username}`" class="telegram-link">Telegram</a>
-        </div>
-        <div class="card-body">
-          <p>
-            <a target="_blank" :href="`https://avascan.info/staking/validator/${validator.nodeID}`">
-              {{ shortenNodeID(validator.nodeID) }}
-            </a>
-            <button @click="copyToClipboard(validator.nodeID)" class="copy-button">Copy</button>
-          </p>
-          <p><strong>Fee (%):</strong> <span class="highlight"> %{{ Number(validator.delegationFee) }}</span></p>
-          <p><strong>Uptime (%):</strong> <span class="highlight"> {{ "%" + Number(validator.uptime).toFixed(0) }}</span></p>
-          <p><strong>End Time:</strong> <span class="highlight"> {{ new Date(Number(validator.endTime) * 1000).toISOString().split('T')[0] }}</span></p>
-        </div>
-      </div>
+      <!-- Use the ValidatorCard component for each validator -->
+      <ValidatorCard
+        v-for="validator in turkishValidators"
+        :key="validator.nodeID"
+        :validator="validator"
+      />
     </div>
     <div v-else>
       <h1>Please wait...</h1>
@@ -29,8 +18,12 @@
 
 <script>
 import axios from "axios";
+import ValidatorCard from './ValidatorCard.vue'; // Import the new component
 
 export default {
+  components: {
+    ValidatorCard, // Register the component
+  },
   data() {
     return {
       turkishValidators: [],
@@ -70,17 +63,6 @@ export default {
         this.errorMessage = "Failed to load validators. Please try again later."; // Set error message
         console.error("ERROR: ", error); // Log error for debugging
       }
-    },
-    copyToClipboard(nodeID) {
-      navigator.clipboard.writeText(nodeID).then(() => {
-        alert("Node ID copied to clipboard!"); // Notify user
-      }).catch(err => {
-        console.error("Failed to copy: ", err);
-      });
-    },
-    shortenNodeID(nodeID) {
-      // Return the first 10 characters, "..." and the last 4 characters if the ID is longer than 14 characters
-      return nodeID.length > 14 ? nodeID.substring(0, 10) + "..." + nodeID.substring(nodeID.length - 4) : nodeID;
     },
   },
 };

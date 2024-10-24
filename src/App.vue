@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Table from "./components/Table.vue";
+import Table from "./components/Home.vue";
 import Header from "./components/Header.vue"
 
 export default {
